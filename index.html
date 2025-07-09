@@ -1,0 +1,357 @@
+<!-- index.html for My Digital Traveler | Bilingual ES/EN landing page | v2.4 - Content & Visual Refresh -->
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Digital Traveler – Viaja el mundo. Trabaja digital. Vive libre.</title>
+
+    <!-- SEO & Social -->
+    <meta name="description" content="Viaja el mundo, trabaja digital y vive libre con guías, mentorías y herramientas de IA." />
+    <meta property="og:title" content="My Digital Traveler" />
+    <meta property="og:description" content="Viaja el mundo, trabaja digital y vive libre" />
+    <meta property="og:image" content="IMG/24.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mydigitaltraveler.com" />
+
+    <!-- Favicon -->
+    <link href="logo.jpg" rel="icon">
+
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Configuración de Tailwind y Paleta de Colores -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#008879", // VERDE MARINO
+              secondary: "#008879", 
+              sand: "#F6E2B3",
+              coral: "#f9cb60", // Coral/Dorado
+              light: "#f8f9fa",
+              'dark-text': '#343a40',
+              white: "#FFFFFF",
+            },
+            fontFamily: {
+              sans: ["Lato", "ui-sans-serif", "system-ui"],
+              heading: ["Montserrat", "ui-sans-serif", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Estilos -->
+    <style>
+      body.lang-es [data-en] { display: none; }
+      body.lang-en [data-es] { display: none; }
+      
+      .hero-bg {
+        background-image: url('IMG/13.png');
+        background-size: cover;
+        background-position: center;
+      }
+      .hero-overlay {
+        background: rgba(0, 0, 0, 0.50);
+      }
+      
+      .card-hover-effect {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover-effect:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px -5px rgb(0 0 0 / 0.1);
+      }
+
+      .cta-primary { @apply px-8 py-4 rounded-lg text-lg font-medium bg-coral text-secondary hover:bg-opacity-90 transition; }
+      .cta-secondary { @apply px-8 py-4 rounded-lg text-lg font-medium border border-white/70 text-white hover:bg-white/10 transition; }
+
+      .horizontal-scroll {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .horizontal-scroll::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="font-sans text-dark-text antialiased bg-white">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 bg-primary text-white px-4 py-2 rounded">Saltar al contenido</a>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/90 border-b border-gray-200">
+      <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+        <a href="index.html" class="flex items-center gap-2 text-primary font-heading text-2xl font-extrabold transition hover:opacity-80">
+          <span class="sr-only">My Digital Traveler</span>
+          <img src="IMG/logo.png" alt="Logo de My Digital Traveler" class="h-14 w-auto">
+        </a>
+        <nav class="hidden md:flex gap-x-8 text-sm font-medium text-gray-700">
+          <a href="#about" class="hover:text-primary transition" data-en>About</a>
+          <a href="#about" class="hover:text-primary transition" data-es>Quién Soy</a>
+          <a href="#services" class="hover:text-primary transition" data-en>Services</a>
+          <a href="#services" class="hover:text-primary transition" data-es>Servicios</a>
+          <a href="#incruises" class="hover:text-primary transition" data-en>Travel Club</a>
+          <a href="#incruises" class="hover:text-primary transition" data-es>Club de Viajes</a>
+          <a href="blog.html" class="hover:text-primary transition" data-en>Blog</a>
+          <a href="blog.html" class="hover:text-primary transition" data-es>Blog</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <a href="#contact" class="hidden sm:block px-5 py-2 rounded-md text-sm bg-primary text-white hover:bg-opacity-90 transition-colors duration-300"><span data-en>Contact</span><span data-es>Contacto</span></a>
+             <button id="nav-toggle" aria-label="Menu" class="md:hidden text-primary">
+                <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex items-center gap-2">
+                <button data-lang="en" class="lang-btn px-2 py-1 rounded-md text-sm border border-gray-300 text-gray-500 hover:bg-gray-100 transition-colors">EN</button>
+                <button data-lang="es" class="lang-btn px-2 py-1 rounded-md text-sm border border-gray-300 text-gray-500 hover:bg-gray-100 transition-colors">ES</button>
+            </div>
+        </div>
+      </div>
+       <!-- Menú móvil -->
+      <nav id="nav-menu" class="hidden md:hidden flex-col gap-4 p-6 bg-white border-t border-gray-200">
+          <a href="#about" class="hover:text-primary block py-2" data-en>About</a><a href="#about" class="hover:text-primary block py-2" data-es>Quién soy</a>
+          <a href="#services" class="hover:text-primary block py-2" data-en>Services</a><a href="#services" class="hover:text-primary block py-2" data-es>Servicios</a>
+           <a href="#incruises" class="hover:text-primary block py-2" data-en>Travel Club</a><a href="#incruises" class="hover:text-primary block py-2" data-es>Club de Viajes</a>
+          <a href="blog.html" class="hover:text-primary block py-2" data-en>Blog</a><a href="blog.html" class="hover:text-primary block py-2" data-es>Blog</a>
+          <a href="#contact" class="hover:text-primary block py-2" data-en>Contact</a><a href="#contact" class="hover:text-primary block py-2" data-es>Contacto</a>
+           <div class="flex gap-2 mt-4">
+               <button data-lang="en" class="lang-btn px-3 py-1 border border-primary rounded text-primary hover:bg-primary hover:text-white">EN</button>
+               <button data-lang="es" class="lang-btn px-3 py-1 border border-primary rounded text-primary hover:bg-primary hover:text-white">ES</button>
+           </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- SECCIÓN HERO -->
+      <section id="home" class="relative hero-bg text-white h-[90vh] md:h-screen flex items-center justify-center overflow-hidden">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="relative z-10 p-6 text-center" data-aos="fade-up">
+          <img src="IMG/logo.png" alt="Logo My Digital Traveler" class="mx-auto mb-8" style="width: 350px;">
+          <h1 class="text-4xl md:text-6xl font-heading font-extrabold drop-shadow-2xl">
+            <span data-en>Travel the world. Work digital. Live free.</span>
+            <span data-es>Viaja el mundo. Trabaja digital. Vive libre.</span>
+          </h1>
+          <p class="mt-6 text-lg md:text-2xl max-w-3xl mx-auto drop-shadow-xl">
+            <span data-en>Your guide to building a life of freedom and purpose, powered by AI and digital skills.</span>
+            <span data-es>Tu guía para construir una vida de libertad y propósito, impulsada por IA y habilidades digitales.</span>
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contact" class="cta-primary" data-en>Start your transformation</a>
+            <a href="#contact" class="cta-primary" data-es>Inicia tu transformación</a>
+            <a href="#services" class="cta-secondary" data-en>Explore Services</a>
+            <a href="#services" class="cta-secondary" data-es>Ver Servicios</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN SOBRE MÍ (QUIÉN SOY) -->
+      <section id="about" class="py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right">
+            <img src="IMG/ChatGPT%20Image%2022%20jun%202025,%2002_58_17%20a.m..png" alt="Retrato de Milena Méndez en la playa" class="rounded-2xl shadow-xl object-cover w-full h-full card-hover-effect" />
+          </div>
+          <div data-aos="fade-left">
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6"><span data-en>Hi, I’m Milena</span><span data-es>Hola, soy Milena</span> 👋</h2>
+            <p class="text-gray-700 text-lg leading-relaxed">
+              <span data-en>I’m a former NYC ad‑exec who traded skyscrapers for sunsets. With nothing but a laptop and a vision, I’ve built a profitable brand while exploring 30+ countries. Now I teach aspiring nomads how to leverage AI, branding and smart funnels to design a life without borders.</span>
+              <span data-es>Soy una ex-publicista de Nueva York que cambió los rascacielos por atardeceres. Con solo una laptop y una visión, he construido una marca rentable mientras exploro más de 30 países. Ahora enseño a futuros nómadas a usar IA, branding y embudos inteligentes para diseñar una vida sin fronteras. Mi misión es ayudarte a construir la tuya.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN PILARES DEL PROYECTO -->
+      <section id="mdt" class="py-24 px-6 bg-light">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16" data-aos="fade-up">
+             <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">
+                <span data-en>This is not just a brand. It's a movement.</span>
+                <span data-es>No es solo una marca. Es un movimiento.</span>
+            </h2>
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto">
+                <span data-en>We integrate three key pillars to help you design a life aligned with your purpose.</span>
+                <span data-es>Integramos tres pilares clave para ayudarte a diseñar una vida alineada con tu propósito.</span>
+            </p>
+          </div>
+          <div class="md:grid md:grid-cols-3 gap-8 text-center flex overflow-x-auto horizontal-scroll pb-4">
+            <div class="p-8 flex-shrink-0 w-4/5 md:w-auto" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-center justify-center h-20 w-20 rounded-full bg-white text-primary shadow-md mx-auto mb-6 card-hover-effect"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg></div>
+                <h3 class="text-xl font-bold font-heading mb-2"><span data-en>Digital Freedom</span><span data-es>Libertad Digital</span></h3>
+                <p class="text-gray-700"><span data-en>Education in branding, automation, and marketing with AI to monetize your skills.</span><span data-es>Educación en branding, automatización y marketing con IA para que monetices tus habilidades.</span></p>
+            </div>
+            <div class="p-8 flex-shrink-0 w-4/5 md:w-auto" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center justify-center h-20 w-20 rounded-full bg-white text-primary shadow-md mx-auto mb-6 card-hover-effect"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 009-9M3 12a9 9 0 019-9m-9 9a9 9 0 009 9" /></svg></div>
+                <h3 class="text-xl font-bold font-heading mb-2"><span data-en>Nomad Lifestyle</span><span data-es>Estilo de Vida Nómada</span></h3>
+                <p class="text-gray-700"><span data-en>Guides, resources, and partnerships to travel the world smarter and connect with a global community.</span><span data-es>Guías, recursos y alianzas para viajar por el mundo de forma inteligente y conectar con una comunidad global.</span></p>
+            </div>
+            <div class="p-8 flex-shrink-0 w-4/5 md:w-auto" data-aos="fade-up" data-aos-delay="300">
+                <div class="flex items-center justify-center h-20 w-20 rounded-full bg-white text-primary shadow-md mx-auto mb-6 card-hover-effect"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></div>
+                <h3 class="text-xl font-bold font-heading mb-2"><span data-en>Personal Empowerment</span><span data-es>Empoderamiento Personal</span></h3>
+                <p class="text-gray-700"><span data-en>Mentorship and inspiring content to help you rewrite your story and live with purpose.</span><span data-es>Mentoría y contenido inspirador para ayudarte a reescribir tu historia y vivir con propósito.</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- SECCIÓN SERVICIOS -->
+      <section id="services" class="py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4"><span data-en>Mentorships to Boost Your Brand</span><span data-es>Mentorías para Impulsar tu Marca</span></h2>
+            <p class="text-gray-700 text-lg"><span data-en>From idea to income, together. Choose the path that best suits your moment.</span><span data-es>De la idea a los ingresos, juntas. Elige el plan que mejor se adapte a tu momento.</span></p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 items-stretch">
+            <div class="rounded-2xl bg-light flex flex-col text-center card-hover-effect overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+              <img src="IMG/23.jpg" class="h-48 w-full object-cover" alt="Mujer sonriendo mientras trabaja en su laptop al aire libre">
+              <div class="p-8 flex flex-col flex-grow">
+                <h3 class="text-2xl font-bold font-heading">🌍 Kit Nómada Digital</h3>
+                <p class="text-gray-500 my-4 flex-grow"><span data-en>The essentials to launch your digital presence: mini-brand, a sales funnel, and a 30-min strategy session.</span><span data-es>Lo esencial para lanzar tu presencia digital: mini-branding, un embudo de ventas y 30 min de mentoría estratégica.</span></p>
+                <div class="text-5xl font-extrabold text-secondary my-4">$197</div>
+                <a href="#contact" class="mt-auto block w-full px-6 py-3 bg-primary/10 text-primary rounded-lg font-medium transition hover:bg-primary hover:text-white"> <span data-en>Start Now</span><span data-es>Empezar Ahora</span> </a>
+              </div>
+            </div>
+            <div class="rounded-2xl bg-secondary text-white flex flex-col text-center shadow-2xl transform md:scale-105 overflow-hidden" data-aos="fade-up">
+              <img src="IMG/22.png" class="h-48 w-full object-cover" alt="Mujer usando laptop con gráficos de IA">
+              <div class="p-8 flex flex-col flex-grow">
+                <h3 class="text-2xl font-bold font-heading">🚀 Impulsa tu Marca</h3>
+                <p class="text-gray-300 my-4 flex-grow"><span data-en>Pro branding, 3 sales funnels with email sequences, and 3 hours of personalized mentorship to accelerate your growth.</span><span data-es>Branding pro, 3 embudos de venta con secuencias de email y 3 horas de mentoría personalizada para acelerar tu crecimiento.</span></p>
+                <div class="text-5xl font-extrabold text-white my-4">$997</div>
+                <a href="#contact" class="mt-auto block w-full px-6 py-3 bg-coral text-secondary rounded-lg font-medium transition hover:bg-opacity-90 shadow-lg"> <span data-en>Boost Me</span><span data-es>Impulsar</span> </a>
+              </div>
+            </div>
+            <div class="rounded-2xl bg-light flex flex-col text-center card-hover-effect overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+              <img src="IMG/13.png" class="h-48 w-full object-cover" alt="Collage de personas trabajando remotamente en varios lugares">
+              <div class="p-8 flex flex-col flex-grow">
+                <h3 class="text-2xl font-bold font-heading">💼 Crea tu Imperio</h3>
+                <p class="text-gray-500 my-4 flex-grow"><span data-en>The complete suite to build your remote empire: full brand identity, website, 5 funnels, and 6 hours of mentorship & automations.</span><span data-es>La suite completa para tu imperio remoto: identidad de marca premium, sitio web, 5 embudos, 6 horas de mentoría y automatizaciones.</span></p>
+                <div class="text-5xl font-extrabold text-secondary my-4">$1,997</div>
+                <a href="#contact" class="mt-auto block w-full px-6 py-3 bg-primary/10 text-primary rounded-lg font-medium transition hover:bg-primary hover:text-white"> <span data-en>Let’s Build</span><span data-es>Construir</span> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- SECCIÓN INCRUISES -->
+      <section id="incruises" class="py-24 px-6 bg-light">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-left">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6"><span data-en>Travel More, For Less</span><span data-es>Viaja Más, Por Menos</span></h2>
+                <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                    <span data-en>As a partner of Incruises, the world's first cruise membership club, I offer you exclusive access to thousands of cruises at unbeatable prices.</span>
+                    <span data-es>Como socia de inCruises, el primer club de membresías de cruceros del mundo, te ofrezco acceso exclusivo a miles de cruceros a precios inigualables.</span>
+                </p>
+                <ul class="space-y-4 text-gray-700">
+                    <li class="flex gap-3 items-start"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong data-en>Save up to 70%</strong><strong data-es>Ahorra hasta un 70%</strong><span data-en> on your bookings.</span><span data-es> en tus reservaciones.</span></span></li>
+                    <li class="flex gap-3 items-start"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong data-en>Flexible Points:</strong><strong data-es>Puntos Flexibles:</strong><span data-en> Your points never expire.</span><span data-es> Tus puntos nunca vencen.</span></span></li>
+                    <li class="flex gap-3 items-start"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong data-en>Cruise for free</strong><strong data-es>Viaja gratis</strong><span data-en> by inviting friends.</span><span data-es> invitando a tus amigos.</span></span></li>
+                </ul>
+                <a href="#contact" class="inline-block mt-8 cta-primary" data-en>Join the Club</a>
+                <a href="#contact" class="inline-block mt-8 cta-primary" data-es>Únete al Club</a>
+            </div>
+            <div data-aos="fade-right">
+                <img src="IMG/01.png" alt="Laptop en un balcón con vista a un crucero en el mar" class="rounded-2xl shadow-xl object-cover w-full h-full card-hover-effect" />
+            </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN TESTIMONIOS -->
+      <section id="testimonials" class="py-24 px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4"><span data-en>Real Stories, Real Transformations</span><span data-es>Historias Reales, Transformaciones Reales</span></h2>
+                <p class="text-gray-700 text-lg mb-20"><span data-en>Hear from women who have changed their lives with My Digital Traveler.</span><span data-es>Escucha a mujeres que han cambiado su vida con My Digital Traveler.</span></p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-x-8 gap-y-16">
+                <div class="bg-light p-8 rounded-2xl" data-aos="fade-up">
+                    <img src="IMG/23.jpg" alt="Foto de cliente Sara" class="w-24 h-24 rounded-full mx-auto -mt-20 border-4 border-white shadow-lg object-cover" />
+                    <p class="mt-6 text-gray-700 italic">“<span data-en>The funnels Milena built doubled my course sales while I was hiking in Patagonia.</span><span data-es>Los embudos que Milena creó duplicaron las ventas de mi curso mientras yo estaba de viaje en la Patagonia.</span>”</p>
+                    <h4 class="mt-4 font-semibold text-coral">Sara – 🇦🇷</h4>
+                </div>
+                <div class="bg-light p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <img src="IMG/13.png" alt="Foto de cliente Alex" class="w-24 h-24 rounded-full mx-auto -mt-20 border-4 border-white shadow-lg object-cover" />
+                    <p class="mt-6 text-gray-700 italic">“<span data-en>Milena’s mentorship helped me quit my 9-5 and land my first remote client in just 6 weeks.</span><span data-es>La mentoría de Milena me ayudó a dejar mi trabajo y conseguir mi primer cliente remoto en solo 6 semanas.</span>”</p>
+                    <h4 class="mt-4 font-semibold text-coral">Alex – 🇨🇦</h4>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- LLAMADA A LA ACCIÓN FINAL -->
+      <section id="contact" class="py-24 px-6 bg-secondary text-white text-center">
+        <div class="max-w-2xl mx-auto" data-aos="fade-up">
+          <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4"><span data-en>Ready to Transform Your Life?</span><span data-es>¿Lista para Transformar tu Vida?</span></h2>
+          <p class="mb-8 text-lg text-gray-300"><span data-en>Schedule a free discovery call or drop me a message. Let's build your dream life, together.</span><span data-es>Agenda una llamada de descubrimiento gratis o envíame un mensaje. Construyamos la vida de tus sueños, juntas.</span></p>
+          <a href="#" class="cta-primary">
+            <span data-en>Let's Talk</span><span data-es>Hablemos</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white text-gray-500 py-10 px-6 text-center border-t">
+        <p class="mb-4">
+             <a href="index.html" class="font-heading text-lg font-bold text-dark-text hover:text-primary transition">My Digital Traveler</a>
+        </p>
+        <div class="flex justify-center gap-6 mb-4">
+            <a href="#" class="hover:text-primary">Instagram</a>
+            <a href="#" class="hover:text-primary">YouTube</a>
+            <a href="#" class="hover:text-primary">LinkedIn</a>
+        </div>
+      <p class="text-sm">
+        &copy; <span id="year"></span> My Digital Traveler • <span data-en>All rights reserved</span><span data-es>Todos los derechos reservados</span>
+      </p>
+      <p class="text-xs mt-4 text-gray-400" data-en>Designed with ❤️ for the modern nomad.</p>
+      <p class="text-xs mt-4 text-gray-400" data-es>Diseñado con ❤️ para la nómada moderna.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Inicializar Animate on Scroll
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+
+      // Lógica para el menú móvil
+      const navToggle = document.getElementById('nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      if (navToggle && navMenu) {
+          navToggle.addEventListener('click', () => {
+              navMenu.classList.toggle('hidden');
+          });
+      }
+
+      // Lógica para el cambio de idioma
+      function setLanguage(lang) {
+        localStorage.setItem('lang', lang);
+        document.documentElement.lang = lang;
+        document.body.className = `font-sans text-dark-text antialiased bg-white lang-${lang}`;
+      }
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          setLanguage(e.target.dataset.lang);
+        });
+      });
+      
+      // Establecer idioma inicial
+      const initialLang = localStorage.getItem('lang') || (navigator.language.startsWith('es') ? 'es' : 'en');
+      setLanguage(initialLang);
+
+      // Año actual para el footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
